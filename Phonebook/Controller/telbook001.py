@@ -1,6 +1,7 @@
 import json
 from Phonebook.View.telinput import *
 from Phonebook.Model.sort import SortDict
+from Phonebook.Model.XXXNumbers.yyynum import *
 
 
 print('Привет! Это программа для записи, поиска и хранения контактов.')
@@ -50,7 +51,9 @@ def main_prog():
                 if key_x not in sl2:
                     print('Некорректный ввод номера контакта.')
                 else:
-                    print(*sl2[key_x], sep=' - ')
+                    print(key_x, end=': ')
+                    tmp_3 = yyynum(sl2[key_x][1])
+                    print(f'{sl2[key_x][0]} - {tmp_3} - {sl2[key_x][-1]}')
                     tmp_3 = get_value()
                     if tmp_3 and tmp_3 != [None]:
                         sl2[key_x] = tmp_3
@@ -75,7 +78,8 @@ def main_prog():
                 else:
                     for k, v in sl2.items():
                         print(k, end=': ')
-                        print(*v, sep=' - ')
+                        tmp_5 = yyynum(v[1])
+                        print(f'{v[0]} - {tmp_5} - {v[-1]}')
 
 
             else:
@@ -90,8 +94,9 @@ def main_prog():
             for k, v in sl2.items():
                 if a.lower() in v[0].lower():
                     n += 1
+                    tmp = yyynum(v[1])
                     print(k, end=': ')
-                    print(*v, sep=' - ')
+                    print(f'{v[0]} - {tmp} - {v[-1]}')
             if not n:
                 print('Контакты не найдены.')
 

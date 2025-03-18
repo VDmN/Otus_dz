@@ -1,4 +1,4 @@
-
+from Phonebook.Model.XXXNumbers.xxxnum import *
 
 def get_value():
     ''' формирование списка [имя, тел, примечание] - это value для нашего словаря .json.
@@ -16,10 +16,11 @@ def get_value():
 
     if name:
         for _ in range(3):
-            tmp = input('Введите телефон 3-15 знаков: ')
-            if not 2 < len(tmp) < 16:
-                print('Некорректная длина номера, введите повторно ')
+            tmp = input('Введите телефон - строго 10 цифр: ')
+            if len(tmp) != 10 or not tmp.isdigit():
+                print('Некорректно введен номер! Введите строго 10 цифр: ')
             else:
+                tmp = xxxnum(tmp)
                 tel = tmp
                 break
 
@@ -27,7 +28,7 @@ def get_value():
             for _ in range(3):
                 tmp = input('Введите примечание не более 37 знаков, или нажмите Enter: ')
                 if not len(tmp) < 38:
-                    print('Некорректная длина номера, введите повторно ')
+                    print('Некорректная длина примечания, введите повторно: ')
                 else:
                     infx = tmp
                     break
